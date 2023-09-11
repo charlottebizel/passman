@@ -1,13 +1,19 @@
+def notice(text: str):
+    print(f"notice: {text}")
+
+def error (text: str):
+    print(f"error: {text}")
+
 def create_user():
 
     user_login = input("enter your new user name: ")
 
     if user_login in users.keys():
-        print("this user name is already exists")
+        error("this user name is already exists")
 
     else: 
         users[user_login] = []
-        print("notice: user created.")
+        notice("user created.")
 
 
 
@@ -18,11 +24,13 @@ def remove_user():
         rep=input("are you sure Y/N?")
         if rep.upper() == "Y":
             del users[user_login]
+            notice("user successfully removed.")
+        else:
+            error(" user not found ! ")
 
 
 def login():
     pass
-
 
 def create_item():
     pass
@@ -51,7 +59,7 @@ def ask_for_number() -> int:
     if choice.isdigit():
         return int(choice)
     else:
-        print("error: not a number")
+        error(" not a number")
         return -1
 
 
@@ -83,7 +91,7 @@ def main():
             case 3:
                 login()
             case _: #le _: signifie TOUT les cas sauf ceux au dessu
-                print("warning")
+                error("warning")
 
 # entry point
 if __name__ == "__main__":
