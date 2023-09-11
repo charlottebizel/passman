@@ -1,5 +1,14 @@
 def create_user():
-    pass
+
+    user_login = input("enter your new user name: ")
+
+    if user_login in users.keys():
+        print("this user name is already exists")
+
+    else: 
+        users[user_login] = []
+        print("notice: user created.")
+
 
 
 def remove_user():
@@ -28,7 +37,9 @@ def show_items():
 
 def search_by_name():
     pass
-# 
+    """
+    ask if the choice is a number and answer the choice if ok or -1
+    """
 
 def ask_for_number() -> int:
     choice :str = input("your choice: ")
