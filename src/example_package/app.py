@@ -12,7 +12,12 @@ def create_user():
 
 
 def remove_user():
-    pass
+    user_login = input("enter a user to delete: ")
+
+    if user_login in users.keys():
+        rep=input("are you sure Y/N?")
+        if rep.upper() == "Y":
+            del users[user_login]
 
 
 def login():
