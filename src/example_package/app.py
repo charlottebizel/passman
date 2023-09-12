@@ -36,7 +36,7 @@ def ask_for_number2() -> int:
         return -1
 
 def login():
-    print("test")
+
     login = input("enter your user name : ")
 
     if login in users.keys():
@@ -84,35 +84,40 @@ def login():
 
 
 def create_item():
-    pass
-
+    new_item = input("tell me the adress of the site you want to add:")
+    
+    if new_item in active_vault:
+            print("item already in vault")
+    
+    else:
+                active_vault.append(new_item)
+                print("item added successfully")
+    
 
 def remove_item():
-    pass
-
+    item = input("tell me what site you want to delete:")
+    if item in active_vault:
+            active_vault.remove(item)
+            print("item deleted successfully")
+    else:
+            print("this item does not exist")
 
 def list_items():
     for item in active_vault:
-        item_name,_,_ = item #_ means there is a variable but not used
-        #if you want to write you can
-        print("item_name")
+        item_name,_,_ = item 
+        print(item_name)
 
 
 def show_items():
-    pass
+    what = input("tell me what do you want to see: ")
+    if what in active_vault:
+        print(what)
+    else:
+        print("this item does not exist")
+
+    
 
 
-def search_by_name():
-    query = input("what are you looking for?:")
-    for item in active_vault:
-        item_name,_,_ = item 
-        if item_name.startswith(query):
-            print(item_name)
-
-    pass
-
-def edit_items():
-    pass
     """
     ask if the choice is a number and answer the choice if ok or -1
     """
@@ -159,7 +164,7 @@ def main():
 # entry point
 if __name__ == "__main__":
     #some variables
-    users: dict[str,list[tuple[str,str,str]]] = {} #key :str, value:list of tuples
-    active_vault:list[tuple[str,str,str]] = []
+    users: dict[str,list[str]] = {} #key :str, value:list of tuples
+    active_vault:list[str] = []
     # variable pour l'apelle du vault dans login qui utile dans d'autre fonct
     main()
