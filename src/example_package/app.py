@@ -84,28 +84,27 @@ def login():
 
 
 def create_item():
-    new_item = input("tell me the adress of the site you want to add:")
+    new_item = input("what you want to add:")
     
     if new_item in active_vault:
-            print("item already in vault")
+            error("item already in vault")
     
     else:
                 active_vault.append(new_item)
-                print("item added successfully")
+                notice("item added successfully")
     
 
 def remove_item():
-    item = input("tell me what site you want to delete:")
+    item = input("tell me what you want to delete: ")
     if item in active_vault:
             active_vault.remove(item)
-            print("item deleted successfully")
+            notice("item deleted successfully")
     else:
-            print("this item does not exist")
+            error("this item does not exist")
 
 def list_items():
-    for item in active_vault:
-        item_name,_,_ = item 
-        print(item_name)
+    for item in active_vault: 
+        print(item)
 
 
 def show_items():
@@ -113,8 +112,25 @@ def show_items():
     if what in active_vault:
         print(what)
     else:
-        print("this item does not exist")
+        error("this item does not exist")
 
+def search_by_name():
+    query = input("what are you looking for?:")
+    for item in active_vault:
+        
+        if item.startswith(query):
+            print(item)
+
+def edit_items():
+    query2 = ("wich item do you want to change?: ")
+    query3 = ("by what?: ")
+    if query2 in active_vault:
+            active_vault.remove(query2)
+            active_vault.append(query3)
+            print("your new item is: ")
+            print(query3)
+    else:
+        error("the item you want to change does not exist in the vault")
     
 
 
