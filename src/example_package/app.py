@@ -32,7 +32,7 @@ def create_user():
 def remove_user():
     user_login = input("enter a user to delete: ")
 
-    if user_login in users:
+    if user_login in users.keys():
         rep=input("are you sure Y/N?")
         if rep.upper() == "Y":
             del users[user_login]
@@ -52,7 +52,8 @@ def ask_for_number2() -> int:
         return -1
     
 """ask for the user login if the login exist in users open the user asked
-and show a welcom message and the table of choice else message error"""
+and show a welcom message and the table of choice witch a return to the first table for 
+zero else message error"""
 
 def login():
 
@@ -81,7 +82,7 @@ def login():
 
         match choice:
             case 0:
-                exit()
+                main()
             case 1:
                 create_item()
             case 2:
