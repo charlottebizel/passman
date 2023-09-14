@@ -1,30 +1,47 @@
+"""notice and error fonction outside of their fonctions to edit with color
+ect for later"""
+
 def notice(text: str):
     print(f"notice: {text}")
 
 def error (text: str):
     print(f"error: {text}")
 
+"""first ask input of the user
+    test if the user is in data base
+    if yes error 
+    else create user
+    """
+
 def create_user():
 
     user_login = input("enter your new user name: ")
 
-    if user_login in users.keys():
+    if user_login in users:
         error("this user name already exists")
 
     else: 
         users[user_login] = []
         notice("user created.")
 
+"""ask for the user input on what to delete
+    if the loginn is in the DB users ask confirmation 
+    and delete if yes
+    else error notice"""
+
 def remove_user():
     user_login = input("enter a user to delete: ")
 
-    if user_login in users.keys():
+    if user_login in users:
         rep=input("are you sure Y/N?")
         if rep.upper() == "Y":
-            del (user_login) 
+            del users[user_login]
             notice("user successfully removed.")
     else:
         error("user not found ! ")
+
+"""input to choose in the options inside the vault
+    ask for choice and direct to the chosen opt """
 
 def ask_for_number2() -> int:
     choice :str = input("your choice: ")
@@ -33,6 +50,9 @@ def ask_for_number2() -> int:
     else:
         error("not a number")
         return -1
+    
+"""ask for the user login if the login exist in users open the user asked
+and show a welcom message and the table of choice else message error"""
 
 def login():
 
@@ -80,7 +100,9 @@ def login():
     else:
         error("this user name does not exist")
 
-
+"""ask what item theh client waants to add
+if the item is already in the vault ->error else save new item
+"""
 
 def create_item():
     new_item = input("what you want to add:")
@@ -91,7 +113,8 @@ def create_item():
     else:
                 active_vault.append(new_item)
                 notice("item added successfully")
-    
+    """ask wich item to delete test if existe if existe delete 
+    if not --> error"""
 
 def remove_item():
     item = input("tell me what you want to delete: ")
@@ -101,10 +124,16 @@ def remove_item():
     else:
             error("this item does not exist")
 
+"""fonction to list all the items in the vault"""
+
 def list_items():
     for item in active_vault: 
         print(item)
 
+"""show an specific item 
+ask for the item , test if exist in vault 
+if exisst ->shaw
+if not -> error"""
 
 def show_items():
     what = input("tell me what do you want to see: ")
@@ -113,12 +142,19 @@ def show_items():
     else:
         error("this item does not exist")
 
+"""let us surch an item with his first letter 
+test if existe in vault print item """
+
 def search_by_name():
     query = input("what are you looking for?:")
     for item in active_vault:
         
         if item.startswith(query):
             print(item)
+
+"""change an item by delete and add a new item
+test if item to change existe in vault if yes change 
+if not ->error """
 
 def edit_items():
     query2 = ("wich item do you want to change?: ")
@@ -131,9 +167,7 @@ def edit_items():
     else:
         error("the item you want to change does not exist in the vault")
 
-    """
-    ask if the choice is a number and answer the choice if ok or -1
-    """
+"""confirm if you want to exit yes -> close """   
 
 def exit():
         rep=input("are you sure  you want to exit Y/N?")
@@ -141,7 +175,10 @@ def exit():
             notice("good bye.")
             print(quit())
 
-            
+"""
+    ask if the choice is a number and answer the choice if ok or -1
+    """
+           
 def ask_for_number() -> int:
     choice :str = input("your choice: ")
     if choice.isdigit():
@@ -150,6 +187,7 @@ def ask_for_number() -> int:
         error(" not a number")
         return -1
 
+"""first table to show in the app and the cases you can choose"""
 
 def main():
     choice : int
