@@ -9,12 +9,11 @@ def create_user():
     user_login = input("enter your new user name: ")
 
     if user_login in users.keys():
-        error("this user name is already exists")
+        error("this user name already exists")
 
     else: 
         users[user_login] = []
         notice("user created.")
-
 
 def remove_user():
     user_login = input("enter a user to delete: ")
@@ -22,17 +21,17 @@ def remove_user():
     if user_login in users.keys():
         rep=input("are you sure Y/N?")
         if rep.upper() == "Y":
-            del users[user_login]
+            del (user_login) 
             notice("user successfully removed.")
-        else:
-            error(" user not found ! ")
+    else:
+        error("user not found ! ")
 
 def ask_for_number2() -> int:
     choice :str = input("your choice: ")
     if choice.isdigit():
         return int(choice)
     else:
-        error(" not a number")
+        error("not a number")
         return -1
 
 def login():
@@ -131,13 +130,18 @@ def edit_items():
             print(query3)
     else:
         error("the item you want to change does not exist in the vault")
-    
-
 
     """
     ask if the choice is a number and answer the choice if ok or -1
     """
 
+def exit():
+        rep=input("are you sure  you want to exit Y/N?")
+        if rep.upper() == "Y":
+            notice("good bye.")
+            print(quit())
+
+            
 def ask_for_number() -> int:
     choice :str = input("your choice: ")
     if choice.isdigit():
