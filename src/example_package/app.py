@@ -25,7 +25,7 @@ def create_user():
         notice("user created.")
 
 """ask for the user input on what to delete
-    if the loginn is in the DB users ask confirmation 
+    if the login is in the DB users ask confirmation 
     and delete if yes
     else error notice"""
 
@@ -101,7 +101,7 @@ def login():
     else:
         error("this user name does not exist")
 
-"""ask what item theh client waants to add
+"""ask what item theh client wants to add
 if the item is already in the vault ->error else save new item
 """
 
