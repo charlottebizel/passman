@@ -1,11 +1,12 @@
 """notice and error fonction outside of their fonctions to edit with color
 ect for later"""
+from colorama import init,Fore,Back,Style
 
 def notice(text: str):
-    print(f"notice: {text}")
+    print(Fore.LIGHTBLUE_EX + f"notice: {text}")
 
 def error (text: str):
-    print(f"error: {text}")
+    print(Fore.LIGHTRED_EX + f"error: {text}")
 
 """first ask input of the user
     test if the user is in data base
@@ -223,6 +224,7 @@ def main():
 # entry point
 if __name__ == "__main__":
     #some variables
+    init(autoreset=True)
     users: dict[str,list[str]] = {} #key :str, value:list of tuples
     active_vault:list[str] = []
     # variable pour l'apelle du vault dans login qui utile dans d'autre fonct
