@@ -6,7 +6,7 @@ groups = ["default", "tools"]
 cross_platform = true
 static_urls = false
 lock_version = "4.3"
-content_hash = "sha256:b4510d373dce10f8fa18acefd2ad7483ba45e102eda375ff91826bead74f4a22"
+content_hash = "sha256:47f2e3dd811955cc8d9867dd215e8858267beea7c4c557af49bd0bdd04ebf414"
 
 [[package]]
 name = "black"
