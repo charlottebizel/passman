@@ -1,6 +1,21 @@
 """notice and error fonction outside of their fonctions to edit with color
 ect for later"""
 from colorama import init,Fore,Back,Style
+import pickle
+import os 
+
+def save():
+     with open("data.dat","wb",encoding="utf8") as file:
+          pickle.dump(users,file)
+          
+
+def load()->dict:
+    if os.path.exists("data.dat"):
+        with open("data.dat","rb",encoding = "utf8") as file:
+            return pickle.load(file)
+    else:
+        return {}
+
 
 def notice(text: str):
     print(Fore.LIGHTBLUE_EX + f"notice: {text}")
@@ -211,6 +226,7 @@ def main():
 
         match choice:
             case 0:
+                save()
                 exit()
             case 1:
                 create_user()
@@ -225,7 +241,7 @@ def main():
 if __name__ == "__main__":
     #some variables
     init(autoreset=True)
-    users: dict[str,list[str]] = {} #key :str, value:list of tuples
+    users: dict[str,list[str]] = load() #key :str, value:list of tuples
     active_vault:list[str] = []
     # variable pour l'apelle du vault dans login qui utile dans d'autre fonct
     main()
