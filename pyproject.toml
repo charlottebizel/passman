@@ -1,0 +1,22 @@
+[project]
+name = "passman"
+version = "0.1"
+description = "projet password manager"
+authors = [
+    {name = "Charlotte", email = "bizelcharlotte@gmail.com"},
+]
+dependencies = [
+    "colorama>=0.4.6",
+]
+requires-python = ">=3.11,<3.12"
+readme = "README.md"
+license = {text = "mit"}
+
+[tool.pdm.dev-dependencies]
+tools = [
+    "black>=23.7.0",
+    "ruff>=0.0.287",
+]
+
+[tool.ruff]
+select = ["E","F","I"]
