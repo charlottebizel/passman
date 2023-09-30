@@ -26,7 +26,11 @@ class App:
           pickle.dump(users,file)
 
     def exit (self):
-        pass
+        rep = input("are you sure  you want to exit Y/N?")
+        if rep.upper() == "Y":
+            self.notice("good bye.")
+            print(quit())
+
 
     def main(self):
         print(Style.BRIGHT +"welcome to passman !!".center(100,"-"))
@@ -91,7 +95,7 @@ class App:
 
         user_login = input("Enter your login:")
         user_psw = input("Enter your psw:")
-        password = Password(login=user_login,password=user_psw)
+        password = password(login=user_login,password=user_psw)
 
         if user_login in self.users and user_psw == password:
             global active_users
