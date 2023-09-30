@@ -69,11 +69,19 @@ class Vault:
             if query == (item):
                 print(item)
     
-    def edit_items(self):
-        pass
-
-
+    def edit_items(self,query2:str,query3:str,name:str,password:str,website:str,login:str):
+        item = Item(name,password,website,login)
+        #query2?
+        #query3?
+        if query2 in self.items:
+            del(self.items[query2])
+            self.items[query3] = item
+            print("your new item is: ")
+            print(query3)
+        else:
+            
 class Item:
+
     def __init__(self,login:str,password:str,name:str,website:str):
         self.login:str = login
         self.password:str = password
