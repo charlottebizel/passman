@@ -15,6 +15,7 @@ class User:
         return self.login + "" + self.password
 
     def __hash__(self)-> int:
+        "unicity test"
         return hash(self.login)
 
 class Vault:
@@ -39,16 +40,19 @@ class Vault:
             return False
 
     def show_item(self):
+        "show items"
         for item in self.items.values():
             print(item)
         
     def show_detail(self,key:str):
+        "show a specific collumn in the items"
         if key in self.items:
             print(self.items[key])
         else:
             pass #TODO
 
     def remove_item(self,name:str,password:str,website:str,login:str)->bool:
+        "test if item exist and delete"
         item = Item(name,password,website,login)
         if item in self.items:
             del (self.items[name])
@@ -58,6 +62,8 @@ class Vault:
 
     def update_item(self,name:str,password:str,website:str,login:str):
         item = Item(name,password,website,login)
+        "test if item existe and modifies the item "
+
         if name in self.items:
             self.items.update(self.items)
             return True
@@ -80,13 +86,13 @@ class Vault:
             print(query3)
         else:
             
-class Item:
+class Item:  
 
     def __init__(self,login:str,password:str,name:str,website:str):
-        self.login:str = login
-        self.password:str = password
-        self.name:str = name
-        self.website:str = website
+            self.login:str = login
+            self.password:str = password
+            self.name:str = name
+            self.website:str = website
 
     def __hash__(self)-> int:
         return hash(self.name)

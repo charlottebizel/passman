@@ -45,7 +45,7 @@ class App:
             \r0 exit.      
             """)
 
-            choice = ask_for_number() 
+        choice = input (ask_for_number()) 
 
         match choice:
             case 0:
@@ -73,11 +73,13 @@ class App:
     def warning (text:str):
         print(Fore.RED + f"warning: {text}")
 
-    def ask_for_number(self)-> int:
-        #ask choice
-        #test if choice is digit
-        #else error
-        pass
+    def ask_for_number(self):
+
+        ask_choice = input("enter your choice:")
+        if ask_choice.isdigit():
+            return int(ask_choice)
+        else:
+            self.error("not a number")
 
     def create_user(self):
 
@@ -112,13 +114,11 @@ class App:
             user_psw = input("Enter your password to delete this user:")
             if user_psw == password #??
                 del user_login
+                #del vault 
             else:
                 self.warning("incorect password")
         else:
             self.warning("the user you want to delete does not exist")
-
-        #if ok del user ?? and vault ??
-        pass
 
     def vault_menu(self):
 
