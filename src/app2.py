@@ -44,8 +44,8 @@ class App:
 
             \r0 exit.      
             """)
-
-        choice = input (ask_for_number()) 
+        global ask_for_number
+        choice = ask_for_number()
 
         match choice:
             case 0:
