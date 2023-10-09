@@ -58,5 +58,8 @@ class Vault:
         else:
             return False
         
-    def serach(self,query:str) -> list[Item]:
-        return [item for item in self.items if query in item.name or query in item.website]  #generateur de list
+    def search(self,search:str) -> list[Item]:
+        return [item for item in self.items if search in item.name or search in item.website]  #generateur de list
+    
+
+  

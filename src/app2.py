@@ -67,8 +67,8 @@ class App:
             self.warning("login or password invalid")
 
 
-
     def logout(self):
+
         self.notice("you are loging out of passman")
         #logout
 
@@ -85,7 +85,8 @@ class App:
             \r2. show item
             \r3. ad item
             \r4. update item
-            \r5. remove
+            \r5. remove item
+            \r6. search item
                    
             \r0. Quit
             """)
@@ -103,6 +104,8 @@ class App:
                 self.update_item()
             case 5:
                 self.delete_item()
+            case 6:
+                self.search()
             case 0:
                 return
             case _:
@@ -123,9 +126,10 @@ class App:
             self.error
 
 
-    def list_items(self,name:str,website:str,login:str,password:str):
-            items =(name,website,login,password)
-            print(items) 
+    def list_items(self):
+            items = self.vault.list_items()
+            for items in self.vault.items: 
+                print(Item) 
 
     
     def get_item(self,name:str) -> Item|None:
@@ -142,32 +146,44 @@ class App:
 
         item = self.get_item(name)
         if item :
-                
-                self.notice("item successfully removed.")
+            self.vault.del_item(item)
+            if True:
+                    self.notice("item successfully deleted.")
+            else:
+                self.error("item not deleted")#?
         else:
             self.error("item not found ! ")
 
 
     def update_item(self):
-        #demander quoi update
-        #demander avec quoi update
-        #montré l'update
-        pass
-
+        old = input("enter the item you want to modify:")
+        item = self.get_item(old)
+        if item : 
+            new = input("give me your modification:")
+            self.vault.del_item(item)
+            self.vault.add_item(item)
+            print(f"this is your new item:{new}")
+        else: 
+            self.error("item you want to modify does not exist")
+       
 
     def show_item(self):
-
+        look = ("what do you want me to show you?:")
+        item = self.get_item(look)
         for item in self.vault.list_items():
-            print(item)
+            if self.items:
+                self.notice(f"here is your item {look}")
+            else:
+                self.error("this item does not exist")
     
 
-    def search(self,query:str) -> list[Item]:
-        #demander quoi chercher?
-        #chercher
-
-        pass
-
-
+    def search(self):
+        search = input("what are you looking for?:")
+        if search in self.vault.items:
+            self.vault.search
+            for search in self.vault.items:
+                print(Item)
+  
     def main(self):
         init(autoreset=True) #initialisation de colorama obligatoire
         print(Style.BRIGHT + "passman".center(80," "))
